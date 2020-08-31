@@ -1,0 +1,4 @@
+docs/build/*
+Manifest.toml
+*.log
+notebooks/.ipynb_checkpoints/*

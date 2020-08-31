@@ -1,0 +1,9 @@
+[deps]
+BasisFunctions = "4343a256-5453-507d-8aad-01a9d7189916"
+CompactTranslatesDict = "455b6770-8cd4-11e8-0457-dd6f5558b097"
+FrameFun = "bbafa164-4497-5d18-87cf-33e911f89480"
+FrameFunTranslates = "d30035f4-e938-55a2-bf66-16ee038a887d"
+LaTeXStrings = "b964fa9f-0449-5b57-a5c2-d3ea65f4040f"
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+PGFPlotsX = "8314cec4-20b6-5062-9cdb-752b83310925"
+Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"

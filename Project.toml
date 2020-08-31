@@ -1,0 +1,38 @@
+name = "FrameFunApplications"
+uuid = "7a13f18b-3cd4-4eee-9874-b211bcc22269"
+authors = ["vincentcp"]
+version = "0.1.0"
+
+[deps]
+BasisFunctions = "4343a256-5453-507d-8aad-01a9d7189916"
+FrameFun = "bbafa164-4497-5d18-87cf-33e911f89480"
+FrameFunDerivativeDicts = "a044d1c3-f59a-42f8-a12e-6f86ba36b853"
+GridArrays = "356ae075-8bc9-5ef9-a342-46c9ba26438c"
+SymbolicDifferentialOperators = "9bed4a80-4cf1-49c9-8068-ed85240b7fe1"
+CompactTranslatesDict = "455b6770-8cd4-11e8-0457-dd6f5558b097"
+DomainSets = "5b8099bc-c8ec-5219-889f-1d9e522a28bf"
+StaticArrays = "90137ffa-7385-5640-81b9-e52037218182"
+FrameFunTranslates = "d30035f4-e938-55a2-bf66-16ee038a887d"
+DelimitedFiles = "8bb1440f-4735-579b-a4ab-409b98df4dab"
+ProgressMeter = "92933f4c-e287-5a05-a399-4b506db050ca"
+Reexport = "189a3867-3050-52da-a836-e630ba90ab69"
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[compat]
+BasisFunctions = "0.2"
+FrameFun= "0.2"
+FrameFunDerivativeDicts = "0.1"
+GridArrays = "0.1"
+SymbolicDifferentialOperators = "0.1"
+CompactTranslatesDict = "0.1"
+DomainSets = "0.4"
+StaticArrays = "0.12"
+FrameFunTranslates = "0.2"
+ProgressMeter = "1.3"
+Reexport = "0.2"
+
+[targets]
+test = ["Test"]
