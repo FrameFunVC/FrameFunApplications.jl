@@ -34,29 +34,41 @@ module Util
 end # module Util
 @reexport using .Util
 
-# module Plots
-#     using Plots, GridArrays, ..Util
-#
-#     export heatmap_plot
-#     heatmap_plot(N,u,D;opts...) =
-#         heatmap(EquispacedGrid(N,0,1),EquispacedGrid(N,0,1),real.(heatmap_matrix(u,D,EquispacedGrid(N,0,1)^2));opts...)
-#     export quiver_plot
-#     function quiver_plot(N,u,D;γ=2,a=.2,b=.8,c=.2,d=.8,opts...)
-#         _pgγ = EquispacedGrid(γ*N,a,b)×EquispacedGrid(γ*N,c,d)
-#         xγ,yγ = elements(_pgγ)
-#         heatmap(xγ,yγ,heatmap_matrix(u,D,_pgγ);color=:blues)
-#         contour!(xγ,yγ,heatmap_matrix(u,D,_pgγ);color=:black)
-#
-#         _pg = EquispacedGrid(N,a,b)×EquispacedGrid(N,c,d)
-#         x,y = elements(_pgγ)
-#         Vx,Vy,V = velocity_matrices(u,D,_pg)
-#         Vmax = norm(Base.filter(x->!isnan(x),V),Inf)
-#         @show Vmax
-#         _pg_vec = _pg[:]
-#         quiver!([x[1] for x in _pg_vec],[x[2] for x in _pg_vec];quiver=(Vx[:]./(Vmax*N),Vy[:]./(Vmax*N)),color="white")
-#     end
-# end # module Plots
-# @reepoxrt using .Plots
+
+
+module PDEPlots
+    export initialize_plots
+    function initialize_plots()
+        @eval Main begin
+            using Plots
+            export Plots
+        end
+    end
+    using GridArrays, ..Util
+
+    export heatmap_plot
+    function heatmap_plot(N,u,D;opts...)
+        initialize_plots()
+        (x,y),M = heatmap_matrix(u,D,EquispacedGrid(N,0,1)^2)
+        Main.Plots.heatmap(x,y,real.(M);opts...)
+    end
+
+    export quiver_plot
+    function quiver_plot(N,u,D;γ=2,a=.2,b=.8,c=.2,d=.8,opts...)
+        initialize_plots()
+        _pgγ = EquispacedGrid(γ*N,a,b)×EquispacedGrid(γ*N,c,d)
+        ((xγ,yγ),M) = heatmap_matrix(u,D,_pgγ)
+        Main.Plots.heatmap(xγ,yγ,real.(M);color=:blues)
+        Main.Plots.contour!(xγ,yγ,real.(M);color=:black)
+
+        _pg = EquispacedGrid(N,a,b)×EquispacedGrid(N,c,d)
+        (x,y),((Vx,Vy),V) = velocity_vectors(u,subgrid(_pg,D))
+
+        Vmax = norm(V,Inf)
+        Main.Plots.quiver!(x,y;quiver=(real.(Vx)./(Vmax*N),real.(Vy)./(Vmax*N)),color="white")
+    end
+end # module PDEPlots
+@reexport using .PDEPlots
 
 export pdesolve
 pdesolve(pde::PDE; opts...) =
