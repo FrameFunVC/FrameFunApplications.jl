@@ -37,14 +37,13 @@ end # module Util
 
 
 module PDEPlots
-    export initialize_plots
     function initialize_plots()
         @eval Main begin
             using Plots
             export Plots
         end
     end
-    using GridArrays, ..Util
+    using GridArrays, ..Util, BasisFunctions
 
     export heatmap_plot
     function heatmap_plot(N,u,D;opts...)
@@ -54,7 +53,7 @@ module PDEPlots
     end
 
     export quiver_plot
-    function quiver_plot(N,u,D;γ=2,a=.2,b=.8,c=.2,d=.8,opts...)
+    function quiver_plot(N,u,D;γ=2,a=.2,b=.8,c=.2,d=.8,v_scaling=1,v_uniform = false,opts...)
         initialize_plots()
         _pgγ = EquispacedGrid(γ*N,a,b)×EquispacedGrid(γ*N,c,d)
         ((xγ,yγ),M) = heatmap_matrix(u,D,_pgγ)
@@ -64,8 +63,11 @@ module PDEPlots
         _pg = EquispacedGrid(N,a,b)×EquispacedGrid(N,c,d)
         (x,y),((Vx,Vy),V) = velocity_vectors(u,subgrid(_pg,D))
 
-        Vmax = norm(V,Inf)
-        Main.Plots.quiver!(x,y;quiver=(real.(Vx)./(Vmax*N),real.(Vy)./(Vmax*N)),color="white")
+        Vmax = norm(V,Inf)*2
+        Vx ./= (Vmax*N)
+        Vy ./= (Vmax*N)
+
+        Main.Plots.quiver!(x,y;quiver=(real.(Vx),real.(Vy)),color="white",opts...)
     end
 end # module PDEPlots
 @reexport using .PDEPlots
