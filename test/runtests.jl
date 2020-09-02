@@ -314,25 +314,6 @@ sol = FrameFunApplications.SplineSquareExample._run_quarter_square_example_sing(
 # heatmap(x,y,V)
 # norm(Vx[:,end],Inf)
 # a
-# function heatmap_plot(N,u,D;opts...)
-#     (x,y),M = heatmap_matrix(u,D,EquispacedGrid(N,0,1)^2)
-#     heatmap(x,y,real.(M);opts...)
-# end
-#     function quiver_plot(N,u,D;γ=2,a=.2,b=.8,c=.2,d=.8,opts...)
-#         _pgγ = EquispacedGrid(γ*N,a,b)×EquispacedGrid(γ*N,c,d)
-#         ((xγ,yγ),M) = heatmap_matrix(u,D,_pgγ)
-#         heatmap(xγ,yγ,real.(M);color=:blues)
-#         contour!(xγ,yγ,real.(M);color=:black)
-#
-#         _pg = EquispacedGrid(N,a,b)×EquispacedGrid(N,c,d)
-#         (x,y),((Vx,Vy),V) = velocity_vectors(u,subgrid(_pg,D))
-#
-#         # Vmax = norm(Base.filter(x->!isnan(x),V),Inf)
-#         Vmax = norm(V,Inf)
-#         @show Vmax
-#         # quiver!([x[1] for x in _pg][:],[x[2] for x in _pg][:];quiver=(Vx[:]./(Vmax*N),Vy[:]./(Vmax*N)),color="white")
-#         quiver!(x,y;quiver=(real.(Vx)./(Vmax*N),real.(Vy)./(Vmax*N)),color="white")
-#     end
 # a
 # function circle_example(;N=20,γ=4,v=1,r=.05,a=.2,b=.8,c=.2,d=.8)
 #     # basis = Fourier(N)^2
