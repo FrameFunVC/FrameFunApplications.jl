@@ -373,11 +373,14 @@ function _run_quarter_square_example_sing(;N=20,γ=4,v=1,r=.05,a=.2,b=.8,c=.2,d=
         )
 
     u = pdesolve(pde;directsolver=directsolver)
+
+    residuals = _residuals(pde,u)
+
     if verbose
         @info "============================="
         @info "testing solution"
-        @info "Norm coefficients" norm(coefficients(u),Inf)
-        @info "Residual" norm(pde.lhs*coefficients(u)-pde.rhs,Inf) norm(pde.lhs*coefficients(u)-pde.rhs)/norm(pde.rhs)
+        @info "Norm coefficients" residuals.coefficient_norm_inf
+        @info "Residual" residuals.abs_residual_inf, residuals.rel_residual_l2
         @show norm(Δ(u)(collocation_grid),Inf)
         @show norm((δx^0*δy)(u)(flow_grid) .+v,Inf)
         @show norm((δx*δy^0)(u)(flow_grid),Inf)
@@ -391,7 +394,17 @@ function _run_quarter_square_example_sing(;N=20,γ=4,v=1,r=.05,a=.2,b=.8,c=.2,d=
     #, pde, basis, innerbox,
         # outergrid, , collocation_grid, , flow_grid,
         # semi_flow_grid, homogeneous_grid)
-    (;u, domain,innergrid,L_boundary_x, L_boundary_y,flow_grid, pde)
+    (;u, domain, pde, residuals...)
+end
+
+function _residuals(pde,u)
+    abs_residual_inf = norm(pde.lhs*coefficients(u)-pde.rhs,Inf)
+    abs_residual_l2 = norm(pde.lhs*coefficients(u)-pde.rhs)
+    coefficient_norm_inf = norm(coefficients(u),Inf)
+    coefficient_norm_l2 = norm(coefficients(u))
+    rel_residual_inf = abs_residual_inf / coefficient_norm_inf
+    rel_residual_l2 = abs_residual_l2 / coefficient_norm_l2
+    (;abs_residual_inf,abs_residual_l2,coefficient_norm_inf,coefficient_norm_l2,rel_residual_inf,rel_residual_l2)
 end
 
 end # module SplineSquareExample
