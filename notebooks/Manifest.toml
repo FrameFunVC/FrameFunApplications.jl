@@ -266,9 +266,9 @@ version = "0.2.1"
 
 [[FrameFunApplications]]
 deps = ["BasisFunctions", "CompactTranslatesDict", "DelimitedFiles", "DomainSets", "FrameFun", "FrameFunDerivativeDicts", "FrameFunTranslates", "GridArrays", "LinearAlgebra", "ProgressMeter", "Reexport", "StaticArrays", "SymbolicDifferentialOperators"]
-git-tree-sha1 = "e9174793a739d697851e4b6c6b2ca8ea0c31cb93"
+git-tree-sha1 = "f1a68afae24a47f641a8c6296d8bd0932592721f"
 uuid = "7a13f18b-3cd4-4eee-9874-b211bcc22269"
-version = "0.1.2"
+version = "0.1.3"
 
 [[FrameFunDerivativeDicts]]
 deps = ["BasisFunctions", "FrameFun", "GridArrays", "LazyArrays", "LinearAlgebra", "MacroTools", "Reexport", "SparseArrays", "SymbolicDifferentialOperators"]
