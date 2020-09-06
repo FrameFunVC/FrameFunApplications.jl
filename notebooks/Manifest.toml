@@ -140,9 +140,9 @@ version = "1.3.0"
 
 [[DataStructures]]
 deps = ["Compat", "InteractiveUtils", "OrderedCollections"]
-git-tree-sha1 = "88a93640bb3345436284ff089b383c34427f4117"
+git-tree-sha1 = "6189e66c78a2d840db5ee530ac2326505b3cc7ae"
 uuid = "864edb3b-99cc-5e75-8d2d-829cb0a9cfe8"
-version = "0.18.2"
+version = "0.18.4"
 
 [[DataValueInterfaces]]
 git-tree-sha1 = "bfc1187b79289637fa0ef6d4436ebdfe6905cbd6"
@@ -272,9 +272,9 @@ version = "0.1.2"
 
 [[FrameFunDerivativeDicts]]
 deps = ["BasisFunctions", "FrameFun", "GridArrays", "LazyArrays", "LinearAlgebra", "MacroTools", "Reexport", "SparseArrays", "SymbolicDifferentialOperators"]
-git-tree-sha1 = "969b9f6d1c54f231fe3cbb96f10e5e6327edd1d9"
+git-tree-sha1 = "bd6f34b9b4f6799f278498f6ee166b7c2d25a611"
 uuid = "a044d1c3-f59a-42f8-a12e-6f86ba36b853"
-version = "0.1.1"
+version = "0.1.2"
 
 [[FrameFunTranslates]]
 deps = ["BasisFunctions", "CompactTranslatesDict", "DomainSets", "FrameFun", "GridArrays", "InfiniteVectors", "LinearAlgebra", "Reexport", "SparseArrays", "StaticArrays", "SuiteSparse"]
@@ -525,9 +525,9 @@ version = "1.0.2"
 
 [[MbedTLS_jll]]
 deps = ["Libdl", "Pkg"]
-git-tree-sha1 = "a0cb0d489819fa7ea5f9fa84c7e7eba19d8073af"
+git-tree-sha1 = "c0b1286883cac4e2b617539de41111e0776d02e8"
 uuid = "c8ffd9c3-330d-5841-b78e-0817d7145fa1"
-version = "2.16.6+1"
+version = "2.16.8+0"
 
 [[Measures]]
 git-tree-sha1 = "e498ddeee6f9fdb4551ce855a46f54dbd900245f"
@@ -652,9 +652,9 @@ version = "1.6.2"
 
 [[Polynomials]]
 deps = ["Intervals", "LinearAlgebra", "OffsetArrays", "RecipesBase"]
-git-tree-sha1 = "dde6f041572208d40ce6540f02e67b2b0250a59f"
+git-tree-sha1 = "7ce1a60df1a8eb61df4cef5698abc9a18575c91f"
 uuid = "f27b6e38-b328-58d1-80ce-0feddd5e7a45"
-version = "1.1.6"
+version = "1.1.7"
 
 [[Printf]]
 deps = ["Unicode"]
